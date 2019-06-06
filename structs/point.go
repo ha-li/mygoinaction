@@ -10,6 +10,9 @@ type Point struct {
 var (
 	p = Point{X: 1, Y:2}
 	c = &Point{Y: 4, X: 1}
+
+	// exmaples of named variable syntax,
+	// where only initialize a subset of the fields of Point
 	d = Point{X:1}
 	f = Point{}
 )

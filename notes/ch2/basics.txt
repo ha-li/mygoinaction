@@ -1,0 +1,175 @@
+Ch 2
+-go is a simple language you can learn in a few hours
+
+-there is no line ending character in go statements
+
+variables & inferred typing
+===========================
+-variables are declared by var statement with type declared last
+
+var name string
+var age int
+var location string
+
+-you can also declare a list of variables
+
+var (
+   name string
+   age int
+   location string
+)
+
+or
+
+var (
+   name, location string
+   age int
+)
+
+-you can initialize variables, one at a time
+
+var location string = "Brisbane"
+var age int = 12
+var name = "Bruce"
+
+
+var (
+   age int = 12
+   name string = "Bruce"
+)
+
+-types can also be inferred from their initializer
+
+var age = 12
+var name = "Bruce"
+
+
+var (
+   age = 12
+   name = "Bruce"
+)
+
+-inside a function use := operator instead of var/type
+
+func main () {
+   name := "Bruce"
+}
+
+-but still works with var/type declaration
+
+-variables can contain any type, including functions
+
+func main() {
+
+   // create a function
+   action := func() {
+      // a function assigned to action
+   }
+
+   // call action
+   action()
+}
+
+-outside of a func, every construct must begin with a keyword such as:
+var
+func
+and := is not available outside of a func
+
+Constants
+-constants are declared like variables except with the key work const
+ instead of var
+-constants cannot be intialized using := syntax
+
+Packages + Imports
+------------------
+-every Go program is made up of packages
+-programs start running in package main
+-if you define an executable, it should be in the main package and
+ have a main func which will be your entry point into your executable
+
+-import statements
+
+import "fmt"
+
+or
+import (
+   "fmt"
+   "math/rand"
+)
+
+
+-non-standard libraries are namespaced using web urls
+-for example
+   import "github.com/mygoinaction/local"
+
+-the import statement tells the go compiler
+ where the code is, but you have to pull
+ it down yourself using the go get command
+
+ go get github.com/mygoinaction/local
+
+ go get will install into your GOPATH env variable
+ so you should set up GOPATH to point to ~/Go
+
+ under GOPATH should be src, bin/ pkg dirs
+
+ ls $GOPATH
+ bin pkg src
+
+ bin will contain the compiled go binaries, so add this to your path
+ pkg contains the compiled versions of the libraries for the linker to link against
+ src contains the source code organzied bby import path
+
+-exported names
+variable/functions/methods that begin with capital letter are exported
+
+
+Functions
+- can take 0+ arguments, types come after the variable name
+- the return value is specified after the method parameters
+func add(n1 int, n2, int) int {
+
+}
+
+-type can also be declared after a series of variable names if they
+ share the same type
+
+func add2(n1, n2, n3 int) int {
+}
+
+-functions can also return multiple return values
+
+func location(city string) (string, string) {
+   return "Los Angeles", "California"
+}
+
+func main() {
+
+   var region, country = location("Santa Monica")
+}
+
+-functions can also return named values
+this will return the current value of the variables
+the current value could be uninitialized
+-not recommended because they can be confusing (see methods/method.go)
+
+func main (name, city string) (region, continent string) {
+
+   return
+}
+
+Pointers
+-Go has pointers, but not pointer arithmetic
+-struct fields can bbe accessed via a struct pointer
+-indirection through a pointer is transparent, meaning that if you
+ have a pointer, the syntax is no different then if you didn't have
+ a pointer, the compiler does the heavy lifting for you
+-to get the pointer for a value, use the & in front of the value
+-to deference a pointer, use the * symbol
+
+-Go by default passes arguments by value (copying the arguments),
+ to pass by reference, you need to use a pointer or slices of references,
+ or maps of references)
+-since parameters are passed by value (copying the arguments), whatever
+ changes inside the function if they are not returned and saved,
+ are not seen outside the function

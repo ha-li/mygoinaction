@@ -13,9 +13,16 @@ type Bootcamp struct {
 
 
 func main() {
-	fmt.Println (Bootcamp {
+	var b = Bootcamp {
 		MyLat: 35.43,
 		MyLon: -1883.32,
 		MyDate: time.Now(),
-	})
+	}
+	fmt.Println(b)
+
+	c := Bootcamp {
+		43.22, -11.8, time.Now(),
+	}
+
+	fmt.Println(c)
 }

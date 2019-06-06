@@ -1,0 +1,92 @@
+the basic built in types for go
+-bool
+-string
+
+then the rest are numeric types like:
+uint
+int
+uintptr
+uint8  - set of all unsigned 8-bit integers (0-255)
+uint16 - set of all unsinged 16 bit integers (0-65535)
+uint32
+uint64
+
+int8
+
+float32
+float64
+
+complex64
+complex128
+
+byte (same as uint8)
+rune (same as int32)
+
+-type conversions are carried out with the expression
+ T(v)
+ will convert the value v to the type T
+
+ eg
+ var i int = 12
+ var f float64 = float(i)
+ var u uint = uint(f)
+
+ or
+ i := 12
+ f := float64(i)
+ u := uint(f)
+
+-go assignment between items of different types requires explicit conversion,
+ so if the paramater of a function is a different type than what
+ you have, you have to explicity convert it inorder to call the function
+
+-type assertions
+takes a value and tries to create another version in the specified explicit type
+
+Structs
+-is a collection of fields and properties
+-a light class that supports composition but not inheritance
+
+you can define new types as structs or interfaces
+-you do not need to define getters and setters on struct fields, they
+ are automatically accessible
+-only exported fields (capitalized) can be accessed outside the package
+
+a struct is initialized by listing the values of its fields in the same
+order as they are declared in the struct
+-if you only initialize a subset of the fields, then you have to name them
+
+declare a struct called Bootcamp with 3 fields
+type Bootcamp struct {
+   Lat float64
+   Lon float64
+   Date time.Time
+}
+
+var b = Bootcamp{
+   34.0124,
+   -194.32
+   time.Now(),   <-- notice this trailing comma is needed
+}
+
+c := Bootcamp { 23.22, -11.2, time.Now, }
+
+fmt.Println(b)
+fmt.Println(c)
+
+note the declaration of a type :
+
+ type NewTypeName struct {
+
+    // fields go here
+    Name string
+
+ }
+
+-you can use the dot-notation to access fields
+ var two = NewTypeName {
+    Name: "bob",
+ }
+
+ // this accesses two name field
+ fmt.Println (two.Name)
