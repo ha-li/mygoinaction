@@ -4,11 +4,10 @@ import (
 	"fmt"
 )
 
-
 var (
-	i int = 42
+	i int     = 42
 	f float64 = float64(i)
-	u uint = uint(f)
+	u uint    = uint(f)
 )
 
 func main() {

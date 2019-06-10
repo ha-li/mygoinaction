@@ -1,0 +1,117 @@
+Arrays and Slices and Maps
+-break
+-continue
+-make
+
+-the expression
+  [n]T
+
+ is an array sized n of type T
+
+ var a [10]int
+
+ is an array of 10 for ints
+
+-arrays cannot be resized sinze the size is part of its type
+
+-you can initialize arrays one slot at a time
+ a[0] = 5
+
+-you can initialize the entire array during declaration
+
+ b := [2]string{"bob","Kelly"}
+
+-you can use implicit sizing with an elipsis
+
+  c := [...]string{"one", "wto"}
+
+-the compiler will do a check on the index to see if you can access
+ that index if you are directly accessing it, but if you
+ are in a for loop, you can attempt to access an index that is not
+ allowed, but you will get a runtime panic, index out of range
+
+-more often, we don't know the size of arrays ahead of time, that
+ is what slices are for.
+
+
+Slices
+
+-a slice is a wrapper for arrays when you don't know the size ahead of time
+
+-a slice holds a reference to the underlying array, so changes to the
+ array inside a method are visible to the caller of the method
+
+
+- declaring a slice
+ []T is a slice of type T
+
+ -since size is unknown, the size is not passed in, which will turn an array
+  into a slice
+
+-a slice can be resized
+ s[lo:hi]
+
+ will slice a slice from lo to hi-1 inclusive
+
+- s[lo:lo] is an empty slice
+
+   to find the size of a slice resized, subtract the lo index from the
+   high index
+
+   s[5, 6] size is 6-5 = 1
+
+- s[lo:] is from lo to end of array
+- s[:hi] is from start to hi-1 inclusive
+
+-allocating a slice
+ you can allocate a slice by initializing it
+
+  s := []int {2, 3, 4, 5,6, 6}
+
+ or by make
+  s := make ([]string, 3)
+  s[0] = "Santa Monica"
+  s[1] = "Bob Hope"
+  s[2] = "Testing"
+
+-use the function append to add to a slice
+   s = append(s, "Finished")
+
+   s = append(s, "Finished", "Not Yet")
+
+-we can append two slices together by using the ...
+ -technically append works by appending strings to
+  slices, the ... tells the append method that you
+  want to append each element of the slice
+
+  cities = []string{"San Diego", "Mountain View"}
+  otherCities = []string {"Santa Monica", "Venice"}
+  cities = append(cities, otherCities...)
+
+-you can find the length of a slice using len
+
+ cities = []string{"San Diego", "Mountain View"}
+ fmt.Println(len(cities))
+
+
+Nil slices
+
+-the zero value of a slice is nil
+-nil slice has a length and capacity of 0
+
+  var z []int
+
+  if z == nil {
+     fmt.Println("nil")
+  }
+
+
+Range
+-range is a key word that allows you to iterate over a slice/map/array
+
+Break
+-break is a key word that interrupts a loop
+
+Continue
+-continue will skip an iteration
+

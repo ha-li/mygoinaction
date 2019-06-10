@@ -9,6 +9,6 @@ import (
 	"fmt"
 )
 
-func Locate (n string) {
-   fmt.Println(n)
+func Locate(n string) {
+	fmt.Println(n)
 }

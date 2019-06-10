@@ -6,7 +6,7 @@ import (
 
 type User struct {
 	FirstName string
-	LastName string
+	LastName  string
 }
 
 // this method belongs to struct User
@@ -14,7 +14,6 @@ type User struct {
 func (u User) Greet(s string) string {
 	return fmt.Sprintf("%s %s says '%s'\n", u.FirstName, u.LastName, s)
 }
-
 
 func local(n string) (region, continent string) {
 	switch n {
@@ -26,7 +25,6 @@ func local(n string) (region, continent string) {
 
 	return
 }
-
 
 func main() {
 	a := User{"Bob", "Hanigan"}

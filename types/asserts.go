@@ -13,8 +13,8 @@ func timeMap(y interface{}) {
 }
 
 func main() {
-	foo := map[string]interface{} {
-		"Matt" : 42,
+	foo := map[string]interface{}{
+		"Matt": 42,
 	}
 
 	timeMap(foo)

@@ -1,0 +1,29 @@
+Interfaces
+
+-an interface is a type
+-defines a set of methods
+
+-define an interface with
+  - keyword type
+  - a new for your interface
+  - the keyword interface (instead of struct)
+  - then the list of methods
+
+type Namer interface {
+   // set of methods
+   Name() string   // a public method named Name that returns a string
+}
+
+
+-any types that implement all the methods of an interface implements that
+ interface implicitly
+ - there is no need to delare that a type implements the interface
+ - just by having a definition for the methods of the interface
+   constitutes implemenation
+ - use the interface by having a method that takes in/returns a type
+   of that interface, and you can pass in that object
+
+-this encourages design as you go rather than forcing you to design
+ for future extensivity ahead of time, and then never actually
+ doing so in the future
+   - better design as you go to accomodate growth in system

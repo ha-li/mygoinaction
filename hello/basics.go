@@ -1,19 +1,18 @@
 package main
 
-
 import (
 	"fmt"
 )
 
 var (
 	name, locations string
-	age  int
+	age             int
 	//location string
 )
 
 var (
 	province string = "BC"
-	teamCode int = 5
+	teamCode int    = 5
 )
 
 var (
@@ -25,45 +24,45 @@ const (
 	Pi = 3.14
 )
 
-func main () {
+func main() {
 	name = "Hao"
 	age = 24
 	locations = "California"
 	talent := "juggling"
-	fmt.Println (name, age, location)
-	fmt.Println (teamCode, province)
-	fmt.Println (talent)
-	fmt.Println (Pi)
-	fmt.Println (OK)
+	fmt.Println(name, age, location)
+	fmt.Println(teamCode, province)
+	fmt.Println(talent)
+	fmt.Println(Pi)
+	fmt.Println(OK)
 
 	cylonModel := 5
-	fmt.Println (cylonModel)
+	fmt.Println(cylonModel)
 
 	cyType := "Boo"
-	fmt.Println (cyType)
+	fmt.Println(cyType)
 
 	name := "Caprix-Six"
 	aka := fmt.Sprintf("Number %d", 6)
 	fmt.Printf("%s is also known as %s", name, aka)
 	fmt.Println()
 	//print ("Hello World")
-	fmt.Println (add(3,4))
-	fmt.Println (sub(4, 3))
+	fmt.Println(add(3, 4))
+	fmt.Println(sub(4, 3))
 
-	state, continent := location("LA");
+	state, continent := location("LA")
 
-	fmt.Println (state)
-	fmt.Println (continent)
+	fmt.Println(state)
+	fmt.Println(continent)
 
 	var hometown, con = location("New York")
-	fmt.Println (hometown)
-	fmt.Println (con)
+	fmt.Println(hometown)
+	fmt.Println(con)
 
 	region, continent := whereIlive("Matt", "New York")
-	fmt.Printf ("%s lives in %s", region, continent)
+	fmt.Printf("%s lives in %s", region, continent)
 }
 
-func whereIlive (name, city string) (region, continent string) {
+func whereIlive(name, city string) (region, continent string) {
 	switch city {
 	case "New York":
 		continent = "North America"
@@ -86,11 +85,10 @@ func location(city string) (string, string) {
 	return region, continent
 }
 
-func add (x int, y int) int {
+func add(x int, y int) int {
 	return x + y
 }
 
 func sub(x, y int) int {
 	return x - y
 }
-

@@ -1,0 +1,99 @@
+Flow Control
+
+-if statement
+ the if statement does not have ( ), and the { } are required
+
+   if z != nil {
+
+   }
+
+-you can start with a short statement that needs to be executed
+
+    if err := foo(); err != nill {
+
+    }
+
+    the short statement is err := foo()
+    here err is executed before the if condition is tested
+
+-variables declared inside the short statement
+ are inscope in both the if and else block
+
+ if err:= foo(); err != nil {
+    save(err)
+ } else {
+    fmt.Println(err)
+ }
+
+For Loop
+-there is only one for construct
+   - no ( ), the { } required
+
+   sum := 0
+   for i:=0; i < 10; i++ {
+      sum+= i
+   }
+
+-you can skip the pre and post statements
+   for ; sum < 1000; {
+
+   }
+
+-you can mimick the while loop with
+   for sum < 1000 {
+
+   }
+
+- an infinite loop
+
+    for {
+
+    }
+
+
+
+Switch Statements
+-use switch to avoid complex/ugly if/else statements
+-you can only compare values of same type in swtich statmenets
+-you can put expressions in switch/case statements
+
+   mins := now%2
+   switch mins {
+     case 0:
+        fmt.Println("Even")
+     case 2-1:
+        fmt.Println("Odd")
+     defautl:
+         fmt.Println("Impossible")
+   }
+
+-you can use multiple values in a case statement
+
+   score := 7
+   switch score {
+      case 0, 1, 3: fmt.Println("Terrible")
+      case 4, 5: fmt.Println("Mediorce")
+      case 6, 7: fmt.Println("Not Bad")
+      default: fmt.Println("Amazing")
+   }
+
+-switch statements do not fall through by default
+ if you want to fall through you have to explicitly
+ declare fallthrough
+
+ switch score {
+ case 0,1,2:
+    fmt.Println("Bad")
+    fallthrough
+ case 3,4,5:
+    fmt.Println("Better")
+    fallthrough
+ case 6,7,8:
+    fmt.Println("Good")
+    fallthrough
+ defautl:
+    fmt.Println("Keep Trying")
+ }
+
+-you can use a break statemnt in a case
+ to terminate the case statement

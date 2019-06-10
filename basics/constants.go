@@ -10,10 +10,10 @@ var (
 // constants take on the type of their context
 // constants cannot be initialized with :=
 const (
-	Truth = true
-	Name string = "Billy"
+	Truth        = true
+	Name  string = "Billy"
 	// Religion := "nope"
-	Status_OK = 200
+	Status_OK      = 200
 	Status_Created = 201
 )
 
@@ -27,9 +27,9 @@ func main() {
 	// const religion := "Still nope"
 
 	fmt.Println(Pi)
-    fmt.Println(pi)
+	fmt.Println(pi)
 
-	fmt.Println (truth)
+	fmt.Println(truth)
 	fmt.Println(Truth)
 
 	// print and println are built in, but is is better
@@ -45,5 +45,5 @@ func main() {
 	fmt.Println(pis)
 
 	// use fmt.Printf for formatted printing
-	fmt.Printf ("Pi is %f\n", pi)
+	fmt.Printf("Pi is %f\n", pi)
 }

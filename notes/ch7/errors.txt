@@ -1,0 +1,9 @@
+errors
+-in go an error is an interface
+-anything that can describe itself as an error string is an error
+-has a single method
+
+type error interface {
+   Error() string
+}
+

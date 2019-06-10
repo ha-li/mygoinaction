@@ -1,0 +1,58 @@
+Maps
+
+c := map[sting]int {
+   "Los Angeles": 3243243,
+   "Chicago": 3546457,
+   "New York" : 847654
+}
+
+-holds key value pairs
+
+-the syntax of a map declaration is
+   name := map[string]int {...}
+
+   the name of the variabble
+   the assignment operator in go is := (the declare and initialize construct)
+    allows you to declare an initialize at the same time
+   the key word map
+   the key type (string)
+   the value type (int)
+   then the actual initialization {...}
+
+-two ways to create a map
+  - map literal
+  - declaration + initialization
+
+  map literal
+  m := map[string]int { "one":1, "two":2 }
+
+  declaration + initialization
+  var m map[string]int    // this is nil value
+  m = make(map[string]int)    // create by make
+  m["one"] = 1
+
+-if the top level object is a type, you can omit it from the
+ map initialization (but not in subsequent uses)
+
+ m := map[string]Vertex {
+    "Los Angeles": {1.32, 3.23},
+    "San Francisco": {3.23, 4.23},   // no Vertext in {3.23, 3.23}
+ }
+
+ // subsequent uses
+ m["Boston"] = Vertex {3.243, 5.32}
+
+
+-insert an element to a map
+  m[key] = element
+
+-retrieve an element
+ v = map[key]
+
+-deleting from a map
+ delete(map, key)
+
+-testing if an key is present
+ value, ok = map[key]
+  -if key is present ok is true
+  -if key is not present ok is false and value is the zero type of the eelment

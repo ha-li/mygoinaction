@@ -90,3 +90,63 @@ note the declaration of a type :
 
  // this accesses two name field
  fmt.Println (two.Name)
+
+-go doesn't support constructors, but you can have constructor like functions
+func NewThing (name string, age int) *NewThing{
+
+   ...
+}
+
+-Go also supports the new expression which allocated a zeroed out
+ value of the requested type and returns a pointer to it
+
+ func NewCustomType(name string) *CustomType {
+    x := new(CustomType)
+    x. ...//
+    return x  // since x is already a pointer
+ }
+
+-the new expression is equivalent to an empty struct literal
+ x := new(MyOwnThing)
+ y := &MyOwnThing {}
+
+ fmt.Println (*x == *y)
+
+
+-composition
+Go uses composition instead of inheritance
+so if you have an object and you want another object to inherit it,
+you declare a composition relationship
+
+ type Person struct {
+    Id int
+    LastName string
+ }
+
+
+ type Teacher struct {
+    Person
+    Subject string
+ }
+
+-2 ways to initialize objects based on composition
+   -dot notation
+   -struct literal
+
+  dot notation
+  p := Teacher {}
+  p.Id = 234
+  p.LastName = "Miller"
+  p.Subject = "Math"
+
+
+  struct literal
+  p := Teacher {
+     Teacher {Id: 234, LastName: "Miller"},
+     "Math",
+  }
+
+  (note the trailing comma after "Math" is needed if the closing '}' is
+   on a new line, otherwise it is not required if the closing '}' is
+   on the same line)
+

@@ -1,0 +1,56 @@
+Methods
+Go does not support classes
+Go is not OOP
+but it does support methods of struct types even though there is no inheritance
+
+-a method can belong to a struct type by adding the method receive
+ between the func keyword and the method name
+
+type User struct {
+
+  ...
+}
+
+func (u User) Greeting() string {
+   return fmt.Println("Hello %s %s", u.FirstName, u.LastName)
+}
+
+-the method is defined outside the scope of the struct, which allows you
+ to define the method anywhere in the package
+
+-functions are first classmeans they can be :
+  - assigned to variables
+  - passed to functions
+  - return from a function
+
+
+-you can add methods to a type you do not own by aliasing that type
+
+  // this aliases string as MyStr, then adds a method to MyStr
+  type MyStr string
+
+  func (s MyStr) CustomConcat() MyStr {
+     ...
+     return s
+  }
+
+
+-methods can be associated to a type or pointer to a type
+ -use a pointer to a type if the struct is large for better performance
+  since go always passes by value, for a pointer, the address is copied,
+  which is cheaper to use then when a Person object is copied
+
+ -use a pointer when you want changes in a function to be persisted
+  outside of the function
+
+ type Person struct {
+   ...
+ }
+
+ func (p *Person) PersonMethod () ... {
+
+ }
+
+ func (p Person) PersonMethod2 () .... {
+
+ }

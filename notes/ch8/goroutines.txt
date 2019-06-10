@@ -1,0 +1,49 @@
+Go routines
+-a go routine is a  function executing concurrently with other goroutines in the same address space
+  - it is non blocking
+  - it is lightweight (cost to allocate a stack space)
+  - in multi-cpu OS, are multiplexed into multiple OS threads so that
+    if one thread is blocking, other threads continue to run
+  - any function can be called as a goroutine with the construct
+
+       go yourfunction()
+
+  - go routines are managed by the Go runtime
+
+-go routines take a simple function
+
+    func boring() {
+       ...
+    }
+
+    func main() {
+       // launch a go routine
+       go boring ()
+    }
+
+-go routines have its own call stack which shrinks and grows as required
+-is cheap
+-is practical to have 100,000s goroutines
+-is not a thread but can think of it like a thread
+-goroutines get multiplex dynamically onto threads as needed
+
+
+Channels
+-when doing goroutines or anything concurrency you want to be able to
+ communicate between the concurrent/parallel
+-this is done using channels in go
+
+ channels are declared and initialized just like variables
+
+ var c chan int
+ c = make(chan int)
+ // or
+ c := make(chan int)
+
+-send information to a channel
+ c <- 1
+
+-receive information from a channel
+ x := <- c
+
+

@@ -6,8 +6,8 @@ import (
 )
 
 var (
-	goIsFun bool   = true
-	maxInt uint64  = 1<<64-1
+	goIsFun bool       = true
+	maxInt  uint64     = 1<<64 - 1
 	complex complex128 = cmplx.Sqrt(-5 + 12i)
 )
 
