@@ -35,6 +35,8 @@ Channels
 
  channels are declared and initialized just like variables
 
+ they first need to be allocated with make:
+
  var c chan int
  c = make(chan int)
  // or
@@ -46,4 +48,39 @@ Channels
 -receive information from a channel
  x := <- c
 
+-sends and receives block until the other end is ready, allowing
+ you to use them without locks or condition variable
 
+-channels can be buffered by specifying the size
+
+   // waits for 40 ints
+   c := make (chan int, 40)
+
+
+Range + Closing Channels
+-a channel can be closed by the sender using the close method
+
+  close (c)
+
+-you can for loop on a channel until it closes using the range construct on a channel
+  the value returned will be the content of the channel
+
+  for i:=range c {
+     fmt.Println(i)
+  }
+
+-you can test a channel to see if it is closed
+
+ i, ok := <- c
+
+
+-channels can be passed into a function and returned from a func
+
+  func setChannel(c chan int) {
+
+  }
+
+   // returns a receive only channel
+  func getChannel () <- ch string {
+
+  }
