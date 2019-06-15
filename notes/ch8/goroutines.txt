@@ -84,3 +84,18 @@ Range + Closing Channels
   func getChannel () <- ch string {
 
   }
+
+-select statement lets a go routine wait on multiple communication
+ operations
+  - will block until one of its cases can run, then it will
+    execute that case
+  - syntax is like switch statement with case + default
+
+  for {
+     select {
+     case c <- x:
+     case <- quit:
+     default:
+        time.Sleep(50*time.Millisecond)
+     }
+  }

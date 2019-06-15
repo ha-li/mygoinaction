@@ -1,0 +1,17 @@
+Setting up G
+-install the go distribution for your OS
+
+-create a Go/GO/go dir under ~, this is GO_HOME, create that env
+-under GO_HOME, add src, pkg and bin
+
+-add GO_HOME/bin to $PATH
+-add GOPATH as $HOME/Go
+-add GOBIN as $GO_HOME/bin
+
+-add /usr/local/go/bin to your $PATH
+
+
+Install Go Tools
+-install the go get and gofmt 
+
+
