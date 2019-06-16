@@ -16,4 +16,6 @@ func main() {
 	fmt.Printf(f, goIsFun, goIsFun)
 	fmt.Printf(f, maxInt, maxInt)
 	fmt.Printf(f, complex, complex)
+
+	fmt.Printf("%T %v\n", goIsFun, goIsFun)
 }

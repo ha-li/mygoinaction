@@ -5,10 +5,21 @@ import (
 	"time"
 )
 
+
+// a struct is a collection of fields/properties
+// structs do not have methods, but you can crate a method
+// that belongs to a struct
 type Bootcamp struct {
 	MyLat  float64
 	MyLon  float64
 	MyDate time.Time
+}
+
+func (b Bootcamp) getInfo () {
+
+	fmt.Printf ("Location: Lat(%f) Long(%f),\nDate: %v\n", b.MyLat, b.MyLon, b.MyDate)
+	fmt.Printf ("Location: Lat(%f) Long(%f),\nDate: %s\n", b.MyLat, b.MyLon, b.MyDate)
+
 }
 
 func main() {
@@ -24,4 +35,5 @@ func main() {
 	}
 
 	fmt.Println(c)
+	c.getInfo()
 }

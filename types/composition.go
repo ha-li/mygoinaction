@@ -10,6 +10,14 @@ type User struct {
 	Location string
 }
 
+func (u *User) Greet() {
+
+	fmt.Println ("Hello ", u.Name)
+}
+
+// player is composed of User also
+// a player will also inherit the users functions
+// so player will have  a Greet method, see below
 type Player struct {
 	User
 	Number int
@@ -38,4 +46,14 @@ func main() {
 		"Footer",
 	}
 	fmt.Println(p3)
+
+	// methods are inherited in a composition
+	// relationship, which allows for very powerful
+	// object building, for example, if an Job struct has
+	// a Logger struct, we can do things like j.log(...)
+	// an as a result, Job will also implement
+	// any interface that Logger also implements, useful
+	// for certain 'polymorphic' behaviors, ie polymorphism
+	// is automatically done if you have a composition
+	p3.Greet()
 }
