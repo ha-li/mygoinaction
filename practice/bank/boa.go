@@ -1,10 +1,16 @@
 package bank
 
-
-import (
-	"fmt"
-)
-
 func init () {
-	fmt.Println("Init'ing bank package")
+	check := Account {
+		"0001",
+		"boa",
+	}
+	accounts := []Account {check}
+
+	boa := Bank {
+		"boa",
+		 accounts,
+	}
+
+	Register ( "boa", boa)
 }

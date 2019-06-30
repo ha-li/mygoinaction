@@ -1,0 +1,4 @@
+-general Go naming convention
+  if there is only one method, end your interface name with 'er'
+  if there are multiple methods, then name the interface in a way that best
+  matches the behavior
