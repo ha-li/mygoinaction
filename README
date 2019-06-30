@@ -15,3 +15,10 @@ Install Go Tools
 -install the go get and gofmt 
 
 
+
+Go Get
+------
+to get a go repo from git (ex: https://github.com/goinaction/code.git)
+ > go get github.com/goinaction/code.git
+
+ will download and install into your GOPATH/src directory

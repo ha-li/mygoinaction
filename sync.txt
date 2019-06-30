@@ -1,0 +1,54 @@
+sync
+
+-is a library for synchronization
+-allows programs to wait for goroutines to finish instead
+ of exiting right away
+    - in go, once the main function terminates, the program
+      will terminate, even if go routines are still executing,
+      so sync is the preferred way to
+      sync the main function so that go routines can
+      finish executing
+-when implementing concurrent programs, it is best practice
+ to wait for an go routines to terminate prior to letting the
+ main function return
+  - cleanly writing sync'd programs have less bugs and
+    resource corruption
+
+    import "sync"
+
+    ...
+
+    // setup a wait group to process all the go routines
+    var waitGroup sync.WaitGroup
+
+    // how many go routines to wait for
+    waitGroup.Add(len(feeds))
+
+    waitGroup.Done()
+
+-waitGroups count semaphores
+-the Done() method decrements the waitGroup count
+
+-semaphore - a system of sending messages by holding the
+ arms or two flags/poles in certain positions according to
+ an alphabetic code
+
+  - semaphores are a mechanism for concurrency that can be
+    used other than locks
+  - locks are used for mutual exclusive, but there are other
+    needs such as placing an ordering on the threads
+
+    eg
+       > ps | grep ... | wc -l
+
+    we don't want these to run in lock step (ie ps returns one
+    one, then grep runs 1 line, then wc -l runs one line)
+    cause this causes too much context switching
+  - instead the producer runs until buffer is full then
+    consumer runs until buffer is empty
+
+  - semaphore was invented by Dijstra (1965, THE OS)
+    -a synchronization primitive that is higher level than locks
+    -a counter with 2 operations:
+        signal
+        wait

@@ -1,0 +1,10 @@
+
+a channel
+- is a reference type
+- implements a typed queue
+- used to communicate data between go routines
+- channels provide inherent synchronization mechanisms so
+  communication is safe
+
+ // create a channel for Result pointers
+ result = make (chan *Result)

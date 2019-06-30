@@ -1,0 +1,15 @@
+-think of a pointer as an address
+
+   feed *Feed
+
+  so instead of thinking of feed as a pointer to Feed,
+  think of it as the address of Feed
+
+- in Go everything is passed by value, in the case of
+  a pointer, since it is an address, the value of the
+  address is copied into the function, and since
+  it is an address, it effectively allows the function
+  to access that memory space, effectively allowing
+  the function to alter that address space, which is
+  why pass by address/reference functions can change
+  the value

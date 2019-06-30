@@ -1,0 +1,27 @@
+
+a slice:
+-is a reference type that implements a dynamic array
+
+-the syntax of a slice declaration is
+ var v []T
+
+   - the key word var declares a variable
+   - v is the name of the variable
+   - [] indicates a slice (a dynamic array)
+   - T indicates the type the slice will holds
+
+-the syntax of declaring and creating a slice is
+ var v []T = { T {...}, T{...} }
+
+ // a shorten syntax to make it more readable
+ // will declare and initialize the variable
+ v := []T
+
+ // this creates a slice of T types with size of n
+ // and sets the values to the nil equivalent for T
+ v := make ([]T, n)
+
+- the rule of thumb when doing initialization is
+  1. for zero value, use the var form
+  2. for extra initialization or method calls, use the := form
+

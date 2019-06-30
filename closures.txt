@@ -1,0 +1,35 @@
+go supports closures
+
+-closures implement lexically scoped name binding in a language where functions
+ are 1st class citizens
+-operationally, closure is a record storing function + its environment (which
+ is a mapping that associates each free variable of the function
+ with the value/reference to which the variabble was bound when the closure was
+ created
+    - a free variable is a variable which is used local to the function
+      but is defined in the enclosing scope
+    - in contrast a plain function, a closure allows the function to access those
+      captured vairable through the closure's copy of the variables value/reference
+      even when the function is invoked outside of their scope
+
+- in simple terms a closure is an instance of a function where by
+  variables declared outside the scope of the closure can be used in the
+  closure, and the value of those variables take the value placed in
+  a context
+
+- in a language with functions as first class citizens, if the function
+  uses a free variable, then returning such functions are closures
+
+
+eg:
+func p() func int {
+
+    i := 4  // this is a free variable
+
+    // this is a closure, functions are 1st class citizen and this function
+    // also uses a free variable
+    func () {
+       fmt.Println(i)    // this uses i even though i is not a param or a local variable
+    } ()
+}
+

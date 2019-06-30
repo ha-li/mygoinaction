@@ -62,6 +62,19 @@ func funRange () {
 		fmt.Printf("%d %d\n", i, v)
 		a = append(a, i)
 	}
+
+	fmt.Println("trying to change an array")
+	// _ is the blank identifier, used when you have no
+	// need for a value, it gets discarded, allowing you
+	// to ignore that value
+	for i, _ := range a {
+		a[i] = 4
+		fmt.Println(a[i])
+	}
+	// couple interesting things here
+	// the first for loop runs for 3, but appends
+	// so the 2nd for loop runs for 6
+	fmt.Println(a)
 }
 
 func goRoutine (n int, c chan string) {

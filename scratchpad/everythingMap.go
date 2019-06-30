@@ -76,11 +76,38 @@ func mapFunctions () {
 	} else {
 		fmt.Println ("g was not found")
 	}
+}
 
+func testingMap () {
+	p := make(map[string]Point)
+
+	// insert/update an element in a map
+	p["g"] = Point{4.3, 43.}
+	p["h"] = Point {67.3, 43.0}
+
+	// when checking a map for a value, there are 2 return values
+	// 1 - the actual return value
+	// 2 - boolean indicating the key is found or not
+	v, ok := p["a"]
+	if ok {
+		fmt.Println(v)
+	} else {
+		fmt.Println("a was not found")
+	}
+
+	v, ok = p["h"]
+	if ok {
+		fmt.Println("h was found ", v)
+	}
+	p["h"] = Point{5, 5}
+	fmt.Println("after changing p[h], v is ", v)
+	fmt.Println( "and p[h] is ", p)
+	fmt.Println( "v is a copy of p[h] but not p[h]")
 }
 
 func main() {
 	mapLiterals()
 	mapMake()
 	mapFunctions()
+	testingMap()
 }
