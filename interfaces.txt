@@ -2,3 +2,21 @@
   if there is only one method, end your interface name with 'er'
   if there are multiple methods, then name the interface in a way that best
   matches the behavior
+
+- when you call a method via an interface type the following rules apply:
+   1. if the method is declared with pointer receivers, only interface type
+      values that contain pointers can be used
+   2. if the method is declared with a value receiver, you can call the
+      method with either a pointer or a value type
+
+      eg: a Banker interface
+
+   type Banker interface {
+      Transact (account *Account) error
+   }
+
+   func (b *Banker) Transact (account *Account);
+
+   only
+   boa := new(Banker)
+   boa.Transact ( );   // ok

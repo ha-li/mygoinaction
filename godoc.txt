@@ -1,0 +1,21 @@
+go doc for each package can be
+accessed on the terminal by
+
+ > go doc fmt
+
+
+go build, if you run go build on a main package
+you will get a binary in the current directory
+  - this is a command (ie an executable)
+    in contrast to a package/library
+
+  if you build some non-main package, you
+  will get a package
+
+go install <go file> will install into
+  your GO/BIN path
+
+
+go clean test.go
+   will delete the binary of test.go (ie test)
+     

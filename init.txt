@@ -1,0 +1,15 @@
+the init function is a special function that
+will get called during the execution of a program
+if that package is imported
+
+   func init () {}
+
+
+-no parameters can be passed in
+-no return values
+
+sometimes if you want to do call an init
+block on a certain class without using that
+class, you can use a blank import
+which will discard the need to acutally
+use the import, and just call the init
