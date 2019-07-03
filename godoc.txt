@@ -1,21 +1,87 @@
-go doc for each package can be
+go doc
+======
+for each package can be
 accessed on the terminal by
 
  > go doc fmt
 
 
-go build, if you run go build on a main package
+godoc
+=====
+for a web page documentation, use
+  > godoc -http=:6060
+
+  which starts a web server of all godocs
+  installed on your computer
+
+  to access it, simply navigate to localhost:6060
+
+godoc will also include your code, if you formatted correctly
+
+go build
+========
+if you run go build on a main package
 you will get a binary in the current directory
   - this is a command (ie an executable)
     in contrast to a package/library
 
+  > go build goexample.go
+
+      will build the code goexample.go
+
+  > go build .
+
+      will build the code in the current dir
+
+
   if you build some non-main package, you
   will get a package
 
-go install <go file> will install into
+  > go build
+
+     will build the current package
+
+  > go build github.com/goinaction/code/chapter3/wordcount
+
+     will build that package
+
+  > go build github.com/goinaction/code/chapter3/...
+
+     will build any package matching that string
+
+go run
+======
+  go run goexample.go
+
+  will compile and run the go code
+
+go install
+==========
+  go install <go file> will install into
   your GO/BIN path
 
 
+go clean
+========
 go clean test.go
    will delete the binary of test.go (ie test)
-     
+
+
+go vet
+======
+go vet cmdargs.go
+
+   will check your code for common errors not caught by the
+   compiler, like Printf style functions not properly formatted
+
+go fmt
+======
+go fmt cmdargs.go  will format your code according to
+agreed upon styling conventions
+
+
+go get
+======
+used to retrieve packages
+
+ > go get github.com/aws/aws-sdk-go/...
