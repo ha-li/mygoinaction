@@ -1,0 +1,52 @@
+Arrays are fixed length data structure of a contiguous block of elements
+of the same type
+
+ 3 key characteristics of data structure:
+ - fixed length
+ - contiguous
+ - same type
+
+the contiguous nature of arrays increases the likelihood that the
+array stays in the CPU cache
+
+iterating over an array is very fast because of the array is a contiguous
+block of memory
+ - since the elements of the same type, using the size of the type
+   makes it very easy to iterate over the array using array arithmetic
+
+the type of an array includes
+ - the dimension of the array (the length)
+ - the type of the element
+
+since a variable can only be assigned to the same type, array variables
+can only be assigned to arrays of the same size and type
+
+ var i3 [2]int
+ i4 := [2]int { 1, 2}
+
+ i3 = i4       // this is ok
+
+ i5 := [3] int { 1, 2, 3}
+ i3 = i5      // this is not ok cause the type is different
+
+
+array is a value in Go, so you can use it in an assignment operator
+ Go is a pass by value language, so when you assign a variable to
+ another variable of the same type, you now have 2 arrays having the
+ same values (but are different because they have been copied over)
+
+ eg:
+ var i3 [2]int
+ i4 := [2]int {1, 2}
+
+ i3 = i4
+ now both i3 and i4 have values of { 1, 2 }
+
+ i3[0] = 2
+ now i3 is {2, 2}, i4 is {1, 2}
+
+this applies for 2D arrays also, they must be of the same size
+and type for 2D arrays to be copied.
+
+Think of = when assigning arrays as a copy operator
+

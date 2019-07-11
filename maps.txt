@@ -1,0 +1,46 @@
+Map
+- a data structure that provides you with unordered collection of key value pairs
+   -the key is hashed to a numerical value that can be transformed to the scope
+     of the bucket number, allowing the bucket to be directly accessed
+   -the value is then stored into the bucket
+
+
+Ways to create a map in Go
+1. map literal
+2. make builtin
+
+map literal
+-the idiomatic way to create a map in Go
+-the initial length of the map will be based on the number of key value pairs
+ used in the initialization
+-as you add more key value pairs to the map, the length will adjust
+
+-if you just declare a map without initializing it, you have created a nil map
+   nil maps can never hold any key-value pairs, doing so will cause a runtime error
+
+   var nilmap map[int]string
+   nilmap[3] = "three"   // this is a run time error
+
+   nil maps are useful for functions that return a map and error, and there
+   was an error during the execution of the function, preventing the
+   completion of the function, in this case, you can return the error
+   and the nil map to prevent the map from being used
+
+-when you retrieve a value from a map, it also returns a boolean
+   this is the preferred idiomatic way to test if the map holds the key
+   (ie map.exists())
+
+  value,exists := amap["akey"]
+  if exists {
+     fmt.Println(value)
+  }
+
+-iterating over a map is similar to a array, use the range operator
+
+    for k,v := range map {
+       ... do something
+    }
+
+-maps are passed into function as value, but it is an address space,
+ so any changes to the the map inside the function will be permanant
+ and reflected outside the function

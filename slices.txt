@@ -1,6 +1,9 @@
-
-a slice:
--is a reference type that implements a dynamic array
+-Slices are tiny objects that abstract and manipulate an underlying array
+ 3 field data structure:
+   - addr pointer to the underlying array
+   - length (# of elements the slice has access to)
+   - capacity (# of elements the slice has available for growth)
+   - is a reference type that implements a dynamic array
 
 -the syntax of a slice declaration is
  var v []T
@@ -25,3 +28,121 @@ a slice:
   1. for zero value, use the var form
   2. for extra initialization or method calls, use the := form
 
+
+ways to allocate a slice
+ 1. make ([]string, 5)
+       where 5 is the length and capacity
+
+ 2. make ([]string, 3, 5)
+       where 3 is the length and 5 is the capacity.
+       the length must not be larger then the capacity
+
+       when the length and capacity are different, you do not
+       have access to the additional capacity initially, but you can
+       append by that value OR
+
+       you can create new slices that share this same underlying
+       array and that will use the existing capacity
+
+ 3. a slice literal
+       similar to creating an array except that a number
+       is not populated in the [ ] operatory
+       eg:
+         s := []string{"a", "b", "c"}
+            s is a slice of 3 strings
+
+         i := []int { 1, 2, 3, 4 }
+            i is a slice of 4 ints
+
+       you can also specify the initial length and capacity by
+       initializing the index representing the length/capacity
+       you need.
+       eg:
+         if you want a slice of 100 ints:
+         i := []int {99: 0}
+
+
+
+Nil and Empty slices
+-a nil slice is created when you declare a slice but do not
+ initialize it
+
+   var slice []int    // a nil slice
+
+   nil slices are useful when you want to represent a slice
+   that doesn't exist, for example in a function that has
+   an error and you need to return a slice
+
+   nil slice has a nil pointer and length of 0, capacity of 0
+
+-empty slices is a declared and initialized slice of 0
+
+   var slice []int {}
+
+   empty slices are useful for returning empty collections such as
+   when a database query returns nothing
+
+-the difference between a nil slice and a empty slice is that
+ the result of the comparison
+
+    if slice == nil ...
+
+    for nil slices, the above is true
+    for empty slices, the above is not true
+
+-for both nil slices and empty slices, append, len, cap work the same
+
+
+slices allow you to slice a portion of the underlying array to
+create a new slice using the slice operator
+   [m:n]
+      where m is the starting index you want to include,
+            n is the the starting index (m) plus the number of
+              elements to include
+  eg:
+     // a slice with len = capacity = 6
+     slice := []int {1, 2, 3, 4, 5, 6}
+
+     newslice := slice[3:5]
+
+the new slice will have
+  length = m-n
+  capacity = capacity of underlying array - m
+
+you can append to the array up to the capacity, and then
+after that whenever you append, go will allocate a new
+array, copy over the values and return the new array to you
+-append will always increase the length of the array, but not
+ necessarily the capacity
+
+-append will always double the capacity each time it returns
+ until up to 1000, then it will increase capacity by 25%
+
+
+3 index slice
+-you can use a 3 index slice operator to limit the capacity of
+ the new slice
+  newslice := sourceslice[i:j:k]
+
+  len      = j - i
+  capacity = k - i
+  // the capacity cannot be bigger then the underlying array capacity
+
+  like before, if you use append to add to the slice up to the capacity
+  of the underlying array, and then once that is exceeded, append
+  will create a new array and return that with the appropriate
+  capacity
+
+
+range operator
+you can use the range operator to iterate over a slice
+- the value returned from range is a copy of the actual value,
+  so you cannot use the value to change the slice
+- but you can use the index to access the underlying array to change
+  the underlying array
+
+passing slices between functions
+-you can pass a slice into a function as a value, because the slice
+ object is very small
+-changing the slice in side the method will be permanent since the
+ slice holds the address of the array
