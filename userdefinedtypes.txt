@@ -1,0 +1,148 @@
+when you declare a variable in go, the variable is ALWAYS initialized
+-it could be initialized to a specific value, or
+-it could be initialized to the zero value for that type
+-when the variable is of a user defined type, a zero'd value means
+ the individual fields in the struct are zeroed also
+
+
+-it is idiomatic in Go to declare a value and zero it using the keyword var
+ eg:
+    var i int
+
+    this is going to be a zero'd int name i
+
+
+    var s string
+       - this is going to be a zero'd string name s
+
+
+    var u User
+       - this is going to be a User type zero'd
+
+
+-so, even though this is correct, don't do this
+    var i int = 5
+
+  instead, if you are going to initialize it, use a literal with the := operator
+  which declares a variable and initializes it to the literals
+    i := 5
+    s := "bob iger"
+    u := User {
+       age:     10,
+       name:    "Bob Iger",
+    }
+
+    u2 := User { 25, "Ivan the Terrible" }
+
+   notes:
+      1. structs use the curly braces {}
+      2. when using named literals, the order does not matter
+      3. when using un-named literals, the order is as they appear in the struct
+      4. when using 1 line, trailing comma is not used, when multiple lines, the
+         trailing comma is required
+
+- types are declared using
+     - type keyword
+     - name of the type
+     - struct keyword
+
+    type User struct {
+        age int,
+        name string,
+    }
+
+
+-there is no inheritance in Go, only composition
+
+     type Admin struct {
+        User
+        department   string
+     }
+
+
+-another common way to declare a new type is to alias an existing type:
+     type Duration int64
+
+    even though Duration and int64 are related, the compiler will not treat
+    them as the same
+
+Methods
+- are user-defined functions that have a receiver
+- there are two types of receivers in Go
+      a) value receiver
+      b) pointer receiver
+
+  - when using a value receiver, you will always be acting against a copy of the actual value
+    used to make the method call
+  - when using a pointer receiver, the value used to make the call is shared with the method
+
+    consider the two methods:
+
+    func (u User) ChangeName(newName string) {
+        u.name = newName
+    }
+
+    func (u *User) ChangeEmail(newEmail string) {
+        u.email = newEmail
+    }
+
+
+    the first version will actually not change the name because a copy of u is handed
+    to the method, where as in the 2nd version, the name will change because
+    u is shared with the method (due to it being an address that is copied)
+
+    note that you can call both methods using the same syntax
+      aUser.Change ("Bob")
+
+      so if aUser was a value, calling version 2, the compiler would do the equivalent of
+         (&aUser).Change (...)
+
+      and if aUser was a pointer, then calling version 1, the compiler would do the equivalent
+         (*aUser).Change (...)
+
+
+Guidelines for whether to use a value or a pointer as a method receiver
+-does the method need to create a new value or mutate an existing value
+   -if the method needs to create a new value, then use a value
+   -if the method needs to mutate an existing value, then use a pointer
+   -this same guideline should be used to determine whether a method/function
+    takes a pointer or a value as a parameter
+   -be consistent when doing this
+
+-if the value in question is a built-in (integers, strings, booleans)
+   because of the primitive nature of built-ins, always create a new one of the value
+
+   eg:
+      func MyTrim(s string) {
+         return string.Trim(s, " ")
+      }
+
+-if the value in question is a Go reference type
+ ie:
+ slice, map, channels, interface, function types (but not arrays)
+    -variables of reference types are called header values because they
+     contain a pointer to the underlying data structure
+    -header values also contain a small set of properties
+     that are used to manage the underlying data structure
+    -header values are designed to be copied, never share them
+     via pointers. the pointer allows the copy to directly
+     access the underlying data structure, as though they
+     were passed by reference (hence reference type)
+
+   eg of reference type
+
+   type IP []byte
+     - IP is an alias for a slice of byte, which means it is a reference
+       type
+     - aliases are useful when you want to build behavior around a
+       built-in or reference type
+     - pass reference types and their aliases as value
+
+
+-if the value in question is a struct type that could have
+ both primitives and non-primitives
+ -if the value should not be mutated, then use a value
+  so that changes in the method do not affect the value
+  after the method completes (because the value was
+  copied when passed into the method, and the method was
+  operating on a local copy of the value)
