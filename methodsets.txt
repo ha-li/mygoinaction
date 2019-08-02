@@ -1,0 +1,29 @@
+a method set is the methods that a receiver is bound to
+-the method set will vary based on the type of the receiver
+-a value receiver will have a different methodset then a
+ point pointer receiver
+
+Value         Method Receivers
+------------------------------
+ T            (t T)
+*T            (t T) and (t *T)
+
+if we redefine this table from the perspective of the method receiver,
+
+Method Receiver      Values
+---------------------------
+ (t T)               T and *T
+ (t *T)              *T
+
+then we see that when the method's receiver is a value, both pointer types
+and value types can be used to call the method
+
+ ex: in methodsets.go
+ the method ToString is declared with a value receiver, which means
+ that both value types and pointer types can be used to call that method
+ lines 50, 51
+
+ the method DoTest is declared with a pointer type receiver, so only
+ pointer types can call via the method
+
+ 

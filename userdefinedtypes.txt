@@ -146,3 +146,14 @@ Guidelines for whether to use a value or a pointer as a method receiver
   after the method completes (because the value was
   copied when passed into the method, and the method was
   operating on a local copy of the value)
+     -do this for both incoming parameters and the value being acted on
+     -allows you to not have to worry about local effects
+      since the value being acted on is a copy of the actual value
+     -the return value of function will also be a copy of the
+      value, allowing the caller to save or discard the return
+      value
+
+-the decision to use a value or a pointer receiver should not be based
+ on whether the function mutates the receiver value, but rather should bbe
+ based on the nature of the type
+

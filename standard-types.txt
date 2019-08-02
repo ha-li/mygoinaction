@@ -1,0 +1,12 @@
+-io.Reader - represents a source of data to stream from
+-io.Writer - represents a destination for data to stream to
+
+-io.ReadCloser - represents a source of data that will close
+ after it is consumed
+
+-io.Copy (io.Writer, io.Reader)
+  - a function that reads from the source and
+    writes to the destination in chucks, once
+    the last chuck is read and written, the
+    method returns
+
