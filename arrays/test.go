@@ -35,4 +35,21 @@ func main() {
 	for k, v := range i {
 		fmt.Printf("%d %d\n", k, v)
 	}
+
+	var x = [2] int {1, 0}
+	//var y = [3] int { 1, 2, 3}
+	var z = [2] int {2, 3}
+	//x = y
+	x = z
+	for _,v := range x {
+		fmt.Println (v)
+	}
+	z[1] = 2
+	for _,v := range x {
+		fmt.Println (v)
+	}
+
+	// there is not such thing as a nil array
+	var e [2]int
+	e[0] = 4;
 }

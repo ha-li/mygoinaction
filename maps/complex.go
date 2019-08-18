@@ -15,4 +15,8 @@ func main() {
 	v = make(map[string]Vertex)
 	v["Google Headquarters"] = Vertex{3.234, 2.23}
 	fmt.Printf("%v", v)
+
+	y := make(map[int]string)
+	y[1] = "bob"
+	fmt.Println(y[1])
 }

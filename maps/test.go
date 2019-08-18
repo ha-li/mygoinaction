@@ -24,7 +24,9 @@ func main() {
 	m := map[string]int{"one": 1, "two": 2}
 	fmt.Println(m)
 
+	// start off with a nil map
 	var n map[string]int
+	// but then assign it to a make'd map
 	n = make(map[string]int)
 	n["one"] = 1
 

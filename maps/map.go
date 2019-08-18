@@ -36,7 +36,7 @@ func main() {
 	fmt.Printf("nilmap %v %d \n", nilmap, len(nilmap))
 
 	// but as soon as you try to populate it, it will cause a run time panic
-	//nilmap[3] = "three"
+	nilmap[3] = "three"
 	//fmt.Printf("%v %d \n", nilmap, len(nilmap))
 
 	actor := "Jude Law"

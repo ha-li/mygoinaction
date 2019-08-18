@@ -88,7 +88,9 @@ func main () {
 	test5.AMethod1()
 
 	// this is another example of implementing a mutator by pass by value
-	//
+	// this first example shows that the mutator did not mutate the object in main
+	// because of pass by value, but the mutator method does return a TestObject
+	// mutated, so the caller can save the return value, as the 2nd set illustrates
 	test6 := TestObject { 4, "D" }
 	test6.AMutator4()
 	test6.AMethod1()
